@@ -54,7 +54,7 @@ function TeamSelector() {
         try {
             async function getWeather(){
                 if(typeof teams[0] !== 'undefined'){
-                    console.log('hello')
+                    
                     await axios.get(`http://localhost:5000/api/weather/${teams[0].city}`).then((res)=>{
                         setWeather(res.data)
                        })
@@ -70,11 +70,30 @@ function TeamSelector() {
         try {
             async function getWeather(){
                 if(typeof currTeam.city !== 'undefined'){
-                    
-                    await axios.get(`http://localhost:5000/api/weather/${currTeam.city}`).then((res)=>{
-                        setWeather(res.data)
-                        console.log(res.data)
-                       }) 
+                    if(currTeam.city == 'Golden State'){
+                        await axios.get(`http://localhost:5000/api/weather/san-francisco`).then((res)=>{
+                            setWeather(res.data)
+                            console.log(res.data)
+                           }) 
+                    }else if(currTeam.city == 'Brooklyn'){
+                        await axios.get(`http://localhost:5000/api/weather/canarsie`).then((res)=>{
+                            setWeather(res.data)
+                            console.log(res.data)
+                           }) 
+                    }else if(currTeam.city == 'Utah'){
+                        await axios.get(`http://localhost:5000/api/weather/salt-lake-city`).then((res)=>{
+                            setWeather(res.data)
+                            console.log(res.data)
+                           }) 
+                    }
+                    else{
+                        await axios.get(`http://localhost:5000/api/weather/${currTeam.city}`).then((res)=>{
+                            setWeather(res.data)
+                            console.log(res.data)
+                           }) 
+                    }
+                    console.log(currTeam.city)
+                   
                 }
                 if(typeof currTeam.abbreviation != 'undefined'){
                             setLogo(`http://i.cdn.turner.com/nba/nba/.element/img/1.0/teamsites/logos/teamlogos_500x500/${currTeam.abbreviation.toLowerCase()}.png`)
@@ -112,7 +131,7 @@ function TeamSelector() {
   return show?(
     <div className='selector-container'>
         <div style={{width:'100%', display:'flex', justifyContent:'flex-end'}}><ExitToAppIcon onClick={()=>setShow(false)} style ={{color:'red'}}></ExitToAppIcon></div>
-        <h5 style={{margin:0}}>{currTeam.full_name}</h5>
+        <h5 style={{margin:0}}>{currTeam.full_name.split(' ')[currTeam.full_name.split(' ').length-1]}</h5>
  
     
         <img src = {logo} style={{height:50,width:50}}></img>
@@ -126,7 +145,9 @@ function TeamSelector() {
             Temperature
             </h3>
             <div className = 'weather-display-temp-bottom'>
-            {weather.current.temp_f}F / {weather.current.temp_c}C
+                <h5 style={{margin:0}}>{weather.location.name}</h5>
+            <p>{weather.current.temp_f}F / {weather.current.temp_c}C</p>
+            <p style={{fontSize:'12px', color:'white'}}>last updated: {weather.current.last_updated}</p>
             </div>
              </div>
 

@@ -44,6 +44,12 @@
 .weather-display-temp-top{
     border-radius: 20px;
 }
+.weather-display-temp-bottom{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
 .selector-btns{
     display: flex;
 }
