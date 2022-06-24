@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Button } from '@mui/material';
 import '../css/TeamSelector.css'
-import {NBAIcons} from 'react-nba-logos'
+
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ExpandMore from '@mui/icons-material/ExpandMore';
@@ -19,7 +19,7 @@ function TeamSelector() {
     const [logo, setLogo] = useState('')
 
     useEffect( () => {
-        //requests list of nba teams from server
+        //Request list of NBA teams
         try {
             async function getTeams(){
                 await axios.get('http://localhost:5000/api/nba/teams').then((res)=>{
@@ -35,20 +35,7 @@ function TeamSelector() {
           
     }, []);
 
-    useEffect( () => {
-        
-        try {
-            
-                if(typeof teams[index] !== 'undefined'){
-                   setCurrTeam(teams[index]) 
-                } 
-            
-            
-        } catch (error) {
-            console.log(error)
-        }
-          
-    }, [index]);
+//Get weather for the city in 'teams[0]' to display on page load
 
     useEffect(() => {
         try {
@@ -65,6 +52,8 @@ function TeamSelector() {
             console.log(error)
         }
     }, [teams])
+    //Get weather for current team's city 
+    //Set weather state variable to response
 
     useEffect(() => {
         try {
@@ -73,26 +62,26 @@ function TeamSelector() {
                     if(currTeam.city == 'Golden State'){
                         await axios.get(`http://localhost:5000/api/weather/san-francisco`).then((res)=>{
                             setWeather(res.data)
-                            console.log(res.data)
+                            
                            }) 
                     }else if(currTeam.city == 'Brooklyn'){
                         await axios.get(`http://localhost:5000/api/weather/canarsie`).then((res)=>{
                             setWeather(res.data)
-                            console.log(res.data)
+                            
                            }) 
                     }else if(currTeam.city == 'Utah'){
                         await axios.get(`http://localhost:5000/api/weather/salt-lake-city`).then((res)=>{
                             setWeather(res.data)
-                            console.log(res.data)
+                          
                            }) 
                     }
                     else{
                         await axios.get(`http://localhost:5000/api/weather/${currTeam.city}`).then((res)=>{
                             setWeather(res.data)
-                            console.log(res.data)
+                           
                            }) 
                     }
-                    console.log(currTeam.city)
+                   
                    
                 }
                 if(typeof currTeam.abbreviation != 'undefined'){
@@ -108,7 +97,26 @@ function TeamSelector() {
         }
     }, [currTeam])
 
+//Get element in 'teams' at index on index change
+//Set currTeam as new element
+useEffect( () => {
+        
+    try {
+        
+            if(typeof teams[index] !== 'undefined'){
+               setCurrTeam(teams[index]) 
+            } 
+        
+        
+    } catch (error) {
+        console.log(error)
+    }
+      
+}, [index]);
 
+ 
+
+//Increments index
     function handleNextClick(){
         if(index == teams.length){
             return
@@ -118,7 +126,7 @@ function TeamSelector() {
       
         
     }
-
+//Decrements indexx
     function handlePrevClick(){
         if(index == 0){
             return
