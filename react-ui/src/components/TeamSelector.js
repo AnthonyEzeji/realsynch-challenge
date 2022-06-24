@@ -22,7 +22,7 @@ function TeamSelector() {
         //Request list of NBA teams
         try {
             async function getTeams(){
-                await axios.get('http://localhost:5000/api/nba/teams').then((res)=>{
+                await axios.get('http://http://54.83.186.17:5000/api/nba/teams').then((res)=>{
                     setTeams(res.data.data)
                     setCurrTeam(res.data.data[0])
                     
@@ -42,7 +42,7 @@ function TeamSelector() {
             async function getWeather(){
                 if(typeof teams[0] !== 'undefined'){
                     
-                    await axios.get(`http://localhost:5000/api/weather/${teams[0].city}`).then((res)=>{
+                    await axios.get(`http://http://54.83.186.17:5000/api/weather/${teams[0].city}`).then((res)=>{
                         setWeather(res.data)
                        })
                 }
@@ -60,23 +60,23 @@ function TeamSelector() {
             async function getWeather(){
                 if(typeof currTeam.city !== 'undefined'){
                     if(currTeam.city == 'Golden State'){
-                        await axios.get(`http://localhost:5000/api/weather/san-francisco`).then((res)=>{
+                        await axios.get(`http://http://54.83.186.17:5000/api/weather/san-francisco`).then((res)=>{
                             setWeather(res.data)
                             
                            }) 
                     }else if(currTeam.city == 'Brooklyn'){
-                        await axios.get(`http://localhost:5000/api/weather/canarsie`).then((res)=>{
+                        await axios.get(`http://http://54.83.186.17:5000/api/weather/canarsie`).then((res)=>{
                             setWeather(res.data)
                             
                            }) 
                     }else if(currTeam.city == 'Utah'){
-                        await axios.get(`http://localhost:5000/api/weather/salt-lake-city`).then((res)=>{
+                        await axios.get(`http://http://54.83.186.17:5000/api/weather/salt-lake-city`).then((res)=>{
                             setWeather(res.data)
                           
                            }) 
                     }
                     else{
-                        await axios.get(`http://localhost:5000/api/weather/${currTeam.city}`).then((res)=>{
+                        await axios.get(`http://http://54.83.186.17:5000/api/weather/${currTeam.city}`).then((res)=>{
                             setWeather(res.data)
                            
                            }) 
