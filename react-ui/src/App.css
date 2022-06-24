@@ -1,0 +1,10 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App-header img {
+  max-width: 40vw;
+  margin: 5vh 0;
+}
