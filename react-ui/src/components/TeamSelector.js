@@ -73,6 +73,7 @@ function TeamSelector() {
                     
                     await axios.get(`http://localhost:5000/api/weather/${currTeam.city}`).then((res)=>{
                         setWeather(res.data)
+                        console.log(res.data)
                        }) 
                 }
                 if(typeof currTeam.abbreviation != 'undefined'){
@@ -148,18 +149,23 @@ function TeamSelector() {
             <div  className = 'weather-more-container'>
                 <div style={{width:"100%"}} className='weather-more-fl'>
                     <h3 className='weather-more-fl-top'>
-                    Feels Like
+                    Feels
                     </h3>
                     <div className = 'weather-more-fl-bottom'>
-                    <p>{weather.current.feelslike_f}F / {weather.current.feelslike_c}C </p>
+                    
+                    {(weather.current.feelslike_f-weather.current.temp_f).toFixed(2)>0&&<p>{(weather.current.feelslike_f-weather.current.temp_f).toFixed(1)}F/ {(weather.current.feelslike_c-weather.current.temp_c).toFixed(1)}C warmer </p>}
+                    {(weather.current.feelslike_f-weather.current.temp_f).toFixed(2)<0&&<p>{Math.abs(weather.current.feelslike_f-weather.current.temp_f).toFixed(1)}F/ {Math.abs(weather.current.feelslike_c-weather.current.temp_c).toFixed(1)}C cooler </p>}
+                    {(weather.current.feelslike_f-weather.current.temp_f).toFixed(2)==0&&<p>{Math.abs(weather.current.feelslike_f-weather.current.temp_f).toFixed(1)}F/ {Math.abs(weather.current.feelslike_c-weather.current.temp_c).toFixed(1)}C warmer</p>}
+
                     </div>
                 </div>
-                <div style={{width:"100%"}} className='weather-more-wd'>
-                    <h3 className='weather-more-wd-top'>
-                  Wind Degree
+                <div style={{width:"100%"}} className='weather-more-humidity'>
+                    <h3 className='weather-more-humidity-top'>
+                  Humidity
                     </h3>
-                    <div className = 'weather-more-wd-bottom'>
-                    <p> {weather.current.wind_degree}</p>
+                    <div className = 'weather-more-humidity-bottom'>
+                    <p> {weather.current.humidity}%</p>
+                    <div style={{width:'95%', border:'1px solid black', margin:10,backgroundColor:'white'}}><div style={{width :`${weather.current.humidity}%`,height:'20px',backgroundColor:"green"}}></div></div>
                     </div>
                 </div>
                
