@@ -1,4 +1,4 @@
-.selector-container{
+.container{
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -102,3 +102,18 @@ h3{
     width: 90%;
     background-color: aliceblue;
 }
+.menu-item:hover{
+background-color:  rgba(16, 97, 134, 0.589);
+
+}
+.menu-item{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    }
+    #show-team-btn{
+        background-color: rgba(16, 97, 134, 0.589); 
+        color:white
+    }

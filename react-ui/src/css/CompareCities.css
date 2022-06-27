@@ -1,0 +1,21 @@
+.compare-cities{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    
+}
+#back-btn:hover{
+color: red;
+
+}
+#back-btn{
+    font-size: 30px;
+color: black;
+    position: absolute;
+    left: 10px;
+    top:10px;
+    
+
+}
