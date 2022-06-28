@@ -180,7 +180,7 @@ useEffect( () => {
                     </h3>
                     <div className = 'weather-more-humidity-bottom'>
                     <p> {weather.current.humidity}%</p>
-                    <div style={{width:'95%', border:'1px solid black', margin:10,backgroundColor:'white'}}><div style={{width :`${weather.current.humidity}%`,height:'20px',backgroundColor:"green"}}></div></div>
+                    <div style={{width:'95%',borderRadius:'20px' ,border:'1px solid black', margin:10,backgroundColor:'white'}}><div style={{width :`${weather.current.humidity}%`,height:'20px',backgroundColor:"grey", borderRadius:'20px'}}></div></div>
                     </div>
                 </div>
                

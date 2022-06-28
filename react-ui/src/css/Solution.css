@@ -7,3 +7,16 @@
     height: 100vh;
 padding-top:200px ;
 }
+#back-btn{
+    font-size: 30px;
+color: black;
+    position: absolute;
+    left: 10px;
+    top:10px;
+    
+
+}
+#back-btn:hover{
+    color: red;
+    
+    }

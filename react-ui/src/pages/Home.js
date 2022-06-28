@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function Home() {
     var nav  = useNavigate()
   return (
-    <div><Button onClick={()=>{nav('/solution')}}>Solution</Button></div>
+    <div style={{display:"flex", width:"100vw", height:'100vh', justifyContent:'center', alignItems:'center'}}><Button variant='contained' style={{ backgroundColor:'grey'}} onClick={()=>{nav('/solution')}}>Solution</Button></div>
   )
 }
 

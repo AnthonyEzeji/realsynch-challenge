@@ -19,7 +19,7 @@ function TeamSelector() {
     const [logo, setLogo] = useState('')
 
     
-
+//Get list of NBA teams from server
     async function getTeams(){
         if(open){
             setOpen(false)
@@ -37,8 +37,17 @@ function TeamSelector() {
        
         
     }
+//When a list item is selected it will be saved in state as the current team
+function handleTeamClick(e){
+ 
+    if(e.target.id.length>0){
+   
+        setCurrTeam(JSON.parse(e.target.id))
+    }
+   
+}
 
-
+//When the city property of the current team is defined, a request for weather data in that city will be sent to the server.
 useEffect(() => {
     
     async function getWeather(){
@@ -77,19 +86,7 @@ useEffect(() => {
   getWeather()
 }, [currTeam])
 
-    async function handleChange(e){
-     setCurrTeam(e.target.value)   
-     setOpen(false)
-   
-    }
-function handleTeamClick(e){
- 
-    if(e.target.id.length>0){
-   
-        setCurrTeam(JSON.parse(e.target.id))
-    }
-   
-}
+
 
 
   return (
