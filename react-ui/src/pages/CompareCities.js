@@ -1,8 +1,8 @@
 import { Button } from '@mui/material'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import CompareCityLeft from '../components/CompareCityLeft'
-import CompareCityRight from '../components/CompareCityRight'
+
+import CompareCitySelector from '../components/CompareCitySelector'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
@@ -12,8 +12,9 @@ function CompareCities() {
   return (
     <div className='compare-cities'>
         <ArrowBackIcon id="back-btn" onClick={()=>nav('/solution')}></ArrowBackIcon>
-        <CompareCityLeft></CompareCityLeft>
-        <CompareCityRight></CompareCityRight>
+        
+        <CompareCitySelector></CompareCitySelector>
+        <CompareCitySelector></CompareCitySelector>
     </div>
   )
 }

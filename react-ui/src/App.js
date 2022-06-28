@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import rsLogo from "./logo-with-name.png";
 import "./App.css";
 import TeamSelector from "./components/TeamSelector";
-import CompareCityLeft from "./components/CompareCityLeft";
+
 import CompareCities from "./pages/CompareCities";
 import Home from "./pages/Home";
 import {BrowserRouter, Route, Routes, useNavigate} from 'react-router-dom'

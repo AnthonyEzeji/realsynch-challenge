@@ -8,7 +8,7 @@ class nba{
             return request.data
         } catch (error) {
             
-            throw new Error(error)
+            console.log(error)
         }
         
     }

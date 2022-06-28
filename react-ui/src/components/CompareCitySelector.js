@@ -8,7 +8,7 @@ import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 
-function CompareCityRight() {
+function CompareCitySelector() {
     const [teams, setTeams] = useState([])
     const [currTeam, setCurrTeam] = useState({})
     const [index, setIndex] = useState(0)
@@ -201,4 +201,4 @@ useEffect( () => {
   )
 }
 
-export default CompareCityRight
+export default CompareCitySelector
